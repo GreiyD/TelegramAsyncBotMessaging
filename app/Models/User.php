@@ -42,4 +42,53 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * @return string[]
+     */
+    public function getFillable(): array
+    {
+        return $this->fillable;
+    }
+
+    /**
+     * @param string[] $fillable
+     */
+    public function setFillable(array $fillable): void
+    {
+        $this->fillable = $fillable;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getHidden(): array
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * @param string[] $hidden
+     */
+    public function setHidden(array $hidden): void
+    {
+        $this->hidden = $hidden;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getCasts(): array
+    {
+        return $this->casts;
+    }
+
+    /**
+     * @param string[] $casts
+     */
+    public function setCasts(array $casts): void
+    {
+        $this->casts = $casts;
+    }
+
 }

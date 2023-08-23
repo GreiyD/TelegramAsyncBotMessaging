@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('chats', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('time')->nullable();
+            $table->string('limit')->nullable();
+            $table->boolean('limit_enabled')->nullable();
+            $table->foreignId('id_users')->constrained('users');
+            $table->json('data')->nullable();
             $table->timestamps();
         });
     }
@@ -27,7 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bot_types');
+        Schema::dropIfExists('chats');
     }
 };
-
