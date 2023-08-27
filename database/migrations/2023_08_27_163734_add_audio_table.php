@@ -11,19 +11,20 @@ return new class extends Migration {
 	public function up(): void
 	{
 		Schema::create(
-			'chats',
+			'audio',
 			static function(Blueprint $table) {
 				$table->id();
-				$table->string('name');
-				$table->string('time')->nullable();
-				$table->string('limit')->nullable();
-				$table->boolean('limit_enabled')->nullable();
-				$table->json('data')->nullable();
+				$table->string('file_path')->unique();
+				$table->string('audio')->nullable();
+				$table->string('caption')->nullable();
+				$table->string('duration')->nullable();
+				$table->string('performer')->nullable();
+				$table->string('title')->nullable();
+				$table->boolean('disable_notification')->default(FALSE);
 				$table->timestamp('created_at')->useCurrent();
 				$table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 				$table->timestamp('deleted_at')->nullable()->default(NULL);
 			}
 		);
 	}
-
 };
